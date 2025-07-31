@@ -15,7 +15,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity(), SwipeToEditCallback.SwipeToEditCallbac
         })
 
 
-        findViewById<Button>(R.id.start_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.start_button).setOnClickListener {
             currentTask?.let {
                 currentCycle = 1
                 currentTimerType = "pomodoro"
@@ -117,12 +117,12 @@ class MainActivity : AppCompatActivity(), SwipeToEditCallback.SwipeToEditCallbac
             }
         }
 
-        findViewById<Button>(R.id.pause_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.pause_button).setOnClickListener {
             stopTimerService()
             isTimerRunning = false
         }
 
-        findViewById<Button>(R.id.restart_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.restart_button).setOnClickListener {
             currentTask?.let {
                 stopTimerService()
                 currentCycle = 1

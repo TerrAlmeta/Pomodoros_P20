@@ -194,15 +194,30 @@ class MainActivity : AppCompatActivity(), SwipeToEditCallback.SwipeToEditCallbac
     }
 
     private fun requestPermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val batteryOptimizationIntent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
-            batteryOptimizationIntent.data = "package:$packageName".toUri()
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}.launch(batteryOptimizationIntent)
-        }
+        val sharedPref = getSharedPreferences("pomodoro_prefs", Context.MODE_PRIVATE)
+        val permissionsRequested = sharedPref.getBoolean("permissions_requested", false)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val notificationPolicyIntent = Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}.launch(notificationPolicyIntent)
+        if (!permissionsRequested) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val batteryOptimizationIntent =
+                    Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+                batteryOptimizationIntent.data = "package:$packageName".toUri()
+                registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}.launch(
+                    batteryOptimizationIntent
+                )
+            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val notificationPolicyIntent =
+                    Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS)
+                registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {}.launch(
+                    notificationPolicyIntent
+                )
+            }
+            with(sharedPref.edit()) {
+                putBoolean("permissions_requested", true)
+                apply()
+            }
         }
     }
 

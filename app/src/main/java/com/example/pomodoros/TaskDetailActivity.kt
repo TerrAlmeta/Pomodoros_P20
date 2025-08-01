@@ -126,61 +126,58 @@ class TaskDetailActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.save_button).setOnClickListener {
-            val taskName = taskNameEditText.text.toString()
-            val pomodoroDuration = pomodoroDurationEditText.text.toString()
-            val shortBreakDuration = shortBreakDurationEditText.text.toString()
-            val longBreakDuration = longBreakDurationEditText.text.toString()
-            val cycles = cyclesEditText.text.toString()
+            if (validateFields()) {
+                val taskName = taskNameEditText.text.toString()
+                val pomodoroDuration = pomodoroDurationEditText.text.toString()
+                val shortBreakDuration = shortBreakDurationEditText.text.toString()
+                val longBreakDuration = longBreakDurationEditText.text.toString()
+                val cycles = cyclesEditText.text.toString()
 
-            if (taskName.isEmpty() || pomodoroDuration.isEmpty() || shortBreakDuration.isEmpty() || longBreakDuration.isEmpty() || cycles.isEmpty()) {
-                // Show an error message
-                return@setOnClickListener
+                val pomodoroAlarm = alarmSounds[pomodoroAlarmSpinner.selectedItem.toString()] ?: "Vibration"
+                val shortBreakAlarm = alarmSounds[shortBreakAlarmSpinner.selectedItem.toString()] ?: "Vibration"
+                val longBreakAlarm = alarmSounds[longBreakAlarmSpinner.selectedItem.toString()] ?: "Vibration"
+                val pomodoroBackground = backgroundSounds[pomodoroBackgroundSpinner.selectedItem.toString()] ?: "None"
+                val shortBreakBackground = backgroundSounds[shortBreakBackgroundSpinner.selectedItem.toString()] ?: "None"
+                val longBreakBackground = backgroundSounds[longBreakBackgroundSpinner.selectedItem.toString()] ?: "None"
+
+                if (taskId != -1) {
+                    val task = Task(
+                        id = taskId,
+                        name = taskName,
+                        pomodoroDuration = pomodoroDuration.toInt(),
+                        shortBreakDuration = shortBreakDuration.toInt(),
+                        longBreakDuration = longBreakDuration.toInt(),
+                        cycles = cycles.toInt(),
+                        pomodoroAlarmSound = pomodoroAlarm,
+                        shortBreakAlarmSound = shortBreakAlarm,
+                        longBreakAlarmSound = longBreakAlarm,
+                        pomodoroBackgroundSound = pomodoroBackground,
+                        shortBreakBackgroundSound = shortBreakBackground,
+                        longBreakBackgroundSound = longBreakBackground,
+                        color = selectedColor,
+                        order = 0
+                    )
+                    taskDetailViewModel.update(task)
+                } else {
+                    val task = Task(
+                        name = taskName,
+                        pomodoroDuration = pomodoroDuration.toInt(),
+                        shortBreakDuration = shortBreakDuration.toInt(),
+                        longBreakDuration = longBreakDuration.toInt(),
+                        cycles = cycles.toInt(),
+                        pomodoroAlarmSound = pomodoroAlarm,
+                        shortBreakAlarmSound = shortBreakAlarm,
+                        longBreakAlarmSound = longBreakAlarm,
+                        pomodoroBackgroundSound = pomodoroBackground,
+                        shortBreakBackgroundSound = shortBreakBackground,
+                        longBreakBackgroundSound = longBreakBackground,
+                        color = selectedColor,
+                        order = 0
+                    )
+                    taskDetailViewModel.insert(task)
+                }
+                finish()
             }
-
-            val pomodoroAlarm = alarmSounds[pomodoroAlarmSpinner.selectedItem.toString()] ?: "Vibration"
-            val shortBreakAlarm = alarmSounds[shortBreakAlarmSpinner.selectedItem.toString()] ?: "Vibration"
-            val longBreakAlarm = alarmSounds[longBreakAlarmSpinner.selectedItem.toString()] ?: "Vibration"
-            val pomodoroBackground = backgroundSounds[pomodoroBackgroundSpinner.selectedItem.toString()] ?: "None"
-            val shortBreakBackground = backgroundSounds[shortBreakBackgroundSpinner.selectedItem.toString()] ?: "None"
-            val longBreakBackground = backgroundSounds[longBreakBackgroundSpinner.selectedItem.toString()] ?: "None"
-
-            if (taskId != -1) {
-                val task = Task(
-                    id = taskId,
-                    name = taskName,
-                    pomodoroDuration = pomodoroDuration.toInt(),
-                    shortBreakDuration = shortBreakDuration.toInt(),
-                    longBreakDuration = longBreakDuration.toInt(),
-                    cycles = cycles.toInt(),
-                    pomodoroAlarmSound = pomodoroAlarm,
-                    shortBreakAlarmSound = shortBreakAlarm,
-                    longBreakAlarmSound = longBreakAlarm,
-                    pomodoroBackgroundSound = pomodoroBackground,
-                    shortBreakBackgroundSound = shortBreakBackground,
-                    longBreakBackgroundSound = longBreakBackground,
-                    color = selectedColor,
-                    order = 0
-                )
-                taskDetailViewModel.update(task)
-            } else {
-                val task = Task(
-                    name = taskName,
-                    pomodoroDuration = pomodoroDuration.toInt(),
-                    shortBreakDuration = shortBreakDuration.toInt(),
-                    longBreakDuration = longBreakDuration.toInt(),
-                    cycles = cycles.toInt(),
-                    pomodoroAlarmSound = pomodoroAlarm,
-                    shortBreakAlarmSound = shortBreakAlarm,
-                    longBreakAlarmSound = longBreakAlarm,
-                    pomodoroBackgroundSound = pomodoroBackground,
-                    shortBreakBackgroundSound = shortBreakBackground,
-                    longBreakBackgroundSound = longBreakBackground,
-                    color = selectedColor,
-                    order = 0
-                )
-                taskDetailViewModel.insert(task)
-            }
-            finish()
         }
 
         findViewById<Button>(R.id.cancel_button).setOnClickListener {
@@ -222,5 +219,62 @@ class TaskDetailActivity : AppCompatActivity() {
             view.foreground = null
         }
         selectedView.foreground = ContextCompat.getDrawable(this, R.drawable.color_selection_border)
+    }
+
+    private fun validateFields(): Boolean {
+        val taskNameEditText = findViewById<EditText>(R.id.task_name_edit_text)
+        val pomodoroDurationEditText = findViewById<EditText>(R.id.pomodoro_duration_edit_text)
+        val shortBreakDurationEditText = findViewById<EditText>(R.id.short_break_duration_edit_text)
+        val longBreakDurationEditText = findViewById<EditText>(R.id.long_break_duration_edit_text)
+        val cyclesEditText = findViewById<EditText>(R.id.cycles_edit_text)
+
+        var isValid = true
+
+        if (taskNameEditText.text.toString().isEmpty()) {
+            taskNameEditText.setBackgroundResource(R.drawable.edit_text_background_error)
+            taskNameEditText.error = "Campo Requerido"
+            isValid = false
+        } else {
+            taskNameEditText.setBackgroundResource(R.drawable.edit_text_background)
+            taskNameEditText.error = null
+        }
+
+        if (pomodoroDurationEditText.text.toString().isEmpty()) {
+            pomodoroDurationEditText.setBackgroundResource(R.drawable.edit_text_background_error)
+            pomodoroDurationEditText.error = "Campo Requerido"
+            isValid = false
+        } else {
+            pomodoroDurationEditText.setBackgroundResource(R.drawable.edit_text_background)
+            pomodoroDurationEditText.error = null
+        }
+
+        if (shortBreakDurationEditText.text.toString().isEmpty()) {
+            shortBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background_error)
+            shortBreakDurationEditText.error = "Campo Requerido"
+            isValid = false
+        } else {
+            shortBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background)
+            shortBreakDurationEditText.error = null
+        }
+
+        if (longBreakDurationEditText.text.toString().isEmpty()) {
+            longBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background_error)
+            longBreakDurationEditText.error = "Campo Requerido"
+            isValid = false
+        } else {
+            longBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background)
+            longBreakDurationEditText.error = null
+        }
+
+        if (cyclesEditText.text.toString().isEmpty()) {
+            cyclesEditText.setBackgroundResource(R.drawable.edit_text_background_error)
+            cyclesEditText.error = "Campo Requerido"
+            isValid = false
+        } else {
+            cyclesEditText.setBackgroundResource(R.drawable.edit_text_background)
+            cyclesEditText.error = null
+        }
+
+        return isValid
     }
 }

@@ -13,29 +13,44 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <TextView
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre" />
+
         <EditText
             android:id="@+id/task_name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="name"
-            android:hint="@string/task_name"
+            android:hint="Introduce un nombre para la Tarea"
             android:inputType="text"
             android:minHeight="48dp"
-            style="@style/CustomEditTextStyle" />
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:textColorHint="@color/light_gray"
+            android:textColor="@color/white" />
+
+        <TextView
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Duración" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
+                style="@style/FieldTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/pomodoro_duration"
-                android:labelFor="@id/pomodoro_duration_edit_text"
-                android:textColor="@color/white" />
+                android:text="Pomodoro" />
 
             <EditText
                 android:id="@+id/pomodoro_duration_edit_text"
@@ -45,22 +60,23 @@
                 android:inputType="number"
                 android:minHeight="48dp"
                 android:minWidth="48dp"
-                style="@style/CustomEditTextStyle" />
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
+                style="@style/FieldTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/short_break_duration"
-                android:labelFor="@id/short_break_duration_edit_text"
-                android:textColor="@color/white" />
+                android:text="Receso" />
 
             <EditText
                 android:id="@+id/short_break_duration_edit_text"
@@ -70,22 +86,23 @@
                 android:inputType="number"
                 android:minHeight="48dp"
                 android:minWidth="48dp"
-                style="@style/CustomEditTextStyle" />
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
+                style="@style/FieldTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/long_break_duration"
-                android:labelFor="@id/long_break_duration_edit_text"
-                android:textColor="@color/white" />
+                android:text="Descanso" />
 
             <EditText
                 android:id="@+id/long_break_duration_edit_text"
@@ -95,124 +112,175 @@
                 android:inputType="number"
                 android:minHeight="48dp"
                 android:minWidth="48dp"
-                style="@style/CustomEditTextStyle" />
+                android:background="@drawable/edit_text_background"
+                android:padding="12dp"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ciclos" />
+
+        <EditText
+            android:id="@+id/cycles_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:background="@drawable/edit_text_background"
+            android:padding="12dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            style="@style/TitleTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Alarma" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/FieldTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pomodoro" />
+
+            <Spinner
+                android:id="@+id/pomodoro_alarm_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                style="@style/CustomSpinnerStyle" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
             <TextView
+                style="@style/FieldTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/cycles"
-                android:labelFor="@id/cycles_edit_text"
-                android:textColor="@color/white" />
+                android:text="Receso" />
 
-            <EditText
-                android:id="@+id/cycles_edit_text"
+            <Spinner
+                android:id="@+id/short_break_alarm_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="number"
                 android:minHeight="48dp"
-                android:minWidth="48dp"
-                style="@style/CustomEditTextStyle" />
+                style="@style/CustomSpinnerStyle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/FieldTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Descanso" />
+
+            <Spinner
+                android:id="@+id/long_break_alarm_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                style="@style/CustomSpinnerStyle" />
         </LinearLayout>
 
         <TextView
+            style="@style/TitleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/pomodoro_alarm"
-            android:textColor="@color/white" />
+            android:text="Fondo" />
 
-        <Spinner
-            android:id="@+id/pomodoro_alarm_spinner"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            style="@style/CustomSpinnerStyle" />
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/short_break_alarm"
-            android:textColor="@color/white" />
+            <TextView
+                style="@style/FieldTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pomodoro" />
 
-        <Spinner
-            android:id="@+id/short_break_alarm_spinner"
+            <Spinner
+                android:id="@+id/pomodoro_background_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                style="@style/CustomSpinnerStyle" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            style="@style/CustomSpinnerStyle" />
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/long_break_alarm"
-            android:textColor="@color/white" />
+            <TextView
+                style="@style/FieldTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Receso" />
 
-        <Spinner
-            android:id="@+id/long_break_alarm_spinner"
+            <Spinner
+                android:id="@+id/short_break_background_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                style="@style/CustomSpinnerStyle" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            style="@style/CustomSpinnerStyle" />
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/FieldTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Descanso" />
+
+            <Spinner
+                android:id="@+id/long_break_background_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                style="@style/CustomSpinnerStyle" />
+        </LinearLayout>
 
         <TextView
+            style="@style/TitleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/pomodoro_background"
-            android:textColor="@color/white" />
-
-        <Spinner
-            android:id="@+id/pomodoro_background_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            style="@style/CustomSpinnerStyle" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/short_break_background"
-            android:textColor="@color/white" />
-
-        <Spinner
-            android:id="@+id/short_break_background_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            style="@style/CustomSpinnerStyle" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/long_break_background"
-            android:textColor="@color/white" />
-
-        <Spinner
-            android:id="@+id/long_break_background_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            style="@style/CustomSpinnerStyle" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/task_color"
-            android:textColor="@color/white" />
+            android:text="@string/task_color" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -225,35 +293,40 @@
                 android:id="@+id/color_1"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@color/task_color_1" />
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_1" />
 
             <View
                 android:id="@+id/color_2"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/task_color_2" />
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_2" />
 
             <View
                 android:id="@+id/color_3"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/task_color_3" />
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_3" />
 
             <View
                 android:id="@+id/color_4"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/task_color_4" />
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_4" />
 
             <View
                 android:id="@+id/color_5"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="8dp"
-                android:background="@color/task_color_5" />
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_5" />
         </LinearLayout>
 
 

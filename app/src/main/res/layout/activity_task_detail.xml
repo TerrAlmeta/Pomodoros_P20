@@ -166,7 +166,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <TextView
                 style="@style/FieldTextStyle"
@@ -187,7 +189,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <TextView
                 style="@style/FieldTextStyle"
@@ -208,7 +212,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <TextView
                 style="@style/FieldTextStyle"
@@ -236,7 +242,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <TextView
                 style="@style/FieldTextStyle"
@@ -257,7 +265,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <TextView
                 style="@style/FieldTextStyle"
@@ -278,7 +288,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <TextView
                 style="@style/FieldTextStyle"
@@ -304,12 +316,13 @@
             android:layout_marginBottom="8dp"
             android:text="@string/task_color" />
 
-        <LinearLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:columnCount="6"
+            android:rowCount="5"
+            android:useDefaultMargins="true">
 
             <View
                 android:id="@+id/color_1"
@@ -322,7 +335,6 @@
                 android:id="@+id/color_2"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/color_swatch_circle"
                 android:backgroundTint="@color/task_color_2" />
 
@@ -330,7 +342,6 @@
                 android:id="@+id/color_3"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/color_swatch_circle"
                 android:backgroundTint="@color/task_color_3" />
 
@@ -338,7 +349,6 @@
                 android:id="@+id/color_4"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/color_swatch_circle"
                 android:backgroundTint="@color/task_color_4" />
 
@@ -346,17 +356,8 @@
                 android:id="@+id/color_5"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/color_swatch_circle"
                 android:backgroundTint="@color/task_color_5" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
 
             <View
                 android:id="@+id/color_6"
@@ -369,7 +370,6 @@
                 android:id="@+id/color_7"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/color_swatch_circle"
                 android:backgroundTint="@color/task_color_7" />
 
@@ -377,7 +377,6 @@
                 android:id="@+id/color_8"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/color_swatch_circle"
                 android:backgroundTint="@color/task_color_8" />
 
@@ -385,7 +384,6 @@
                 android:id="@+id/color_9"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/color_swatch_circle"
                 android:backgroundTint="@color/task_color_9" />
 
@@ -393,10 +391,149 @@
                 android:id="@+id/color_10"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="8dp"
                 android:background="@drawable/color_swatch_circle"
                 android:backgroundTint="@color/task_color_10" />
-        </LinearLayout>
+
+            <View
+                android:id="@+id/color_11"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_11" />
+
+            <View
+                android:id="@+id/color_12"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_12" />
+
+            <View
+                android:id="@+id/color_13"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_13" />
+
+            <View
+                android:id="@+id/color_14"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_14" />
+
+            <View
+                android:id="@+id/color_15"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_15" />
+
+            <View
+                android:id="@+id/color_16"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_16" />
+
+            <View
+                android:id="@+id/color_17"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_17" />
+
+            <View
+                android:id="@+id/color_18"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_18" />
+
+            <View
+                android:id="@+id/color_19"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_19" />
+
+            <View
+                android:id="@+id/color_20"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_20" />
+
+            <View
+                android:id="@+id/color_21"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_21" />
+
+            <View
+                android:id="@+id/color_22"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_22" />
+
+            <View
+                android:id="@+id/color_23"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_23" />
+
+            <View
+                android:id="@+id/color_24"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_24" />
+
+            <View
+                android:id="@+id/color_25"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_25" />
+
+            <View
+                android:id="@+id/color_26"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_26" />
+
+            <View
+                android:id="@+id/color_27"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_27" />
+
+            <View
+                android:id="@+id/color_28"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_28" />
+
+            <View
+                android:id="@+id/color_29"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_29" />
+
+            <View
+                android:id="@+id/color_30"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_30" />
+        </GridLayout>
 
 
         <LinearLayout

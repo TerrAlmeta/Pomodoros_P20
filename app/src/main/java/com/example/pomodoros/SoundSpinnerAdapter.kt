@@ -33,10 +33,9 @@ class SoundSpinnerAdapter(
 
     private fun createView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = convertView ?: LayoutInflater.from(context)
-            .inflate(android.R.layout.simple_spinner_item, parent, false)
+            .inflate(R.layout.spinner_item_centered, parent, false)
         val textView = view.findViewById<TextView>(android.R.id.text1)
         textView.text = soundNames[position]
-        textView.setTextColor(context.resources.getColor(R.color.white, null))
         return view
     }
 

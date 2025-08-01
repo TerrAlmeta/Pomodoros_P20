@@ -159,12 +159,35 @@ class TaskDetailActivity : AppCompatActivity() {
             findViewById(R.id.color_7),
             findViewById(R.id.color_8),
             findViewById(R.id.color_9),
-            findViewById(R.id.color_10)
+            findViewById(R.id.color_10),
+            findViewById(R.id.color_11),
+            findViewById(R.id.color_12),
+            findViewById(R.id.color_13),
+            findViewById(R.id.color_14),
+            findViewById(R.id.color_15),
+            findViewById(R.id.color_16),
+            findViewById(R.id.color_17),
+            findViewById(R.id.color_18),
+            findViewById(R.id.color_19),
+            findViewById(R.id.color_20),
+            findViewById(R.id.color_21),
+            findViewById(R.id.color_22),
+            findViewById(R.id.color_23),
+            findViewById(R.id.color_24),
+            findViewById(R.id.color_25),
+            findViewById(R.id.color_26),
+            findViewById(R.id.color_27),
+            findViewById(R.id.color_28),
+            findViewById(R.id.color_29),
+            findViewById(R.id.color_30)
         )
 
         val colors = listOf(
-            "#FF7F50", "#6495ED", "#9FE2BF", "#DE3163", "#FFBF00",
-            "#E0BBE4", "#957DAD", "#D291BC", "#FEC8D8", "#FFDFD3"
+            "#e040fb", "#ff9800", "#00c853", "#00c853", "#ffeb3b", "#00ffff",
+            "#6495ed", "#ff7eb3", "#d1f06b", "#81c784", "#7fe5e8", "#ffb054",
+            "#8a9a5b", "#ffbf00", "#d2b48c", "#b38b6d", "#ff6b6b", "#cc7722",
+            "#ff4081", "#fff176", "#ba68c8", "#ff7f50", "#0e2b6a", "#cddc39",
+            "#e0e4e8", "#bdbdbd", "#ffb7a0", "#9fe2bf", "#c3a6ff", "#de3163"
         )
 
         for (i in colorViews.indices) {

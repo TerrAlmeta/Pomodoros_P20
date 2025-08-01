@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Pomodoros</string>
-    <string name="task_name_title">Nombre</string>
-    <string name="task_name_hint">Nombre de Tarea</string>
-    <string name="duration_title">Duración</string>
+    <string name="task_name_title">Name</string>
+    <string name="task_name_hint">Task Name</string>
+    <string name="duration_title">Duration</string>
     <string name="pomodoro_title">Pomodoro</string>
-    <string name="short_break_title">Receso</string>
-    <string name="long_break_title">Descanso</string>
-    <string name="cycles_title">Ciclos</string>
-    <string name="alarm_title">Alarma</string>
-    <string name="background_title">Fondo</string>
-    <string name="required_field">Campo Requerido</string>
+    <string name="short_break_title">Short Break</string>
+    <string name="long_break_title">Long Break</string>
+    <string name="cycles_title">Cycles</string>
+    <string name="alarm_title">Alarm</string>
+    <string name="background_title">Background</string>
+    <string name="required_field">Required Field</string>
     <string name="start">Start</string>
     <string name="pause">Pause</string>
     <string name="restart">Restart</string>
@@ -27,7 +27,7 @@
     <string name="pomodoro_background">Pomodoro Background</string>
     <string name="short_break_background">Short Break Background</string>
     <string name="long_break_background">Long Break Background</string>
-    <string name="task_color">Task Color</string>
+    <string name="task_color">Color</string>
     <string name="all_permissions_granted">All permissions granted</string>
     <string name="some_permissions_are_missing">Some permissions are missing</string>
     <string name="add_task">Add Task</string>

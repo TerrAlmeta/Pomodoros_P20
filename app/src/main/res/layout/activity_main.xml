@@ -94,6 +94,7 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
             android:src="@drawable/ic_add"
+            app:backgroundTint="@color/task_color_5"
             android:contentDescription="@string/add_task" />
 
     </LinearLayout>

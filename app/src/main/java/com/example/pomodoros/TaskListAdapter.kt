@@ -40,25 +40,20 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TasksC
         fun bind(task: Task, listener: OnItemClickListener?) {
             taskItemView.text = task.name
             cyclesTextView.text = task.cycles.toString()
+            val background = itemView.background as GradientDrawable
             if (task.isSelected) {
                 val color = Color.parseColor(task.color)
-                itemView.setBackgroundColor(color)
+                background.setColor(color)
                 taskItemView.setTextColor(Color.parseColor("#344d91"))
                 cyclesTextView.setTextColor(Color.parseColor("#344d91"))
-                val border = GradientDrawable()
-                border.setColor(color)
-                border.setStroke(4, Color.parseColor("#344d91"))
-                itemView.background = border
+                background.setStroke(4, Color.parseColor("#344d91"))
             } else {
-                itemView.setBackgroundColor(Color.TRANSPARENT)
+                background.setColor(Color.TRANSPARENT)
                 if (task.color.isNotEmpty()) {
                     val color = Color.parseColor(task.color)
                     taskItemView.setTextColor(color)
                     cyclesTextView.setTextColor(color)
-                    val border = GradientDrawable()
-                    border.setColor(Color.TRANSPARENT)
-                    border.setStroke(4, color)
-                    itemView.background = border
+                    background.setStroke(4, color)
                 }
             }
             itemView.setOnClickListener {
@@ -83,11 +78,11 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TasksC
 
     class TasksComparator : DiffUtil.ItemCallback<Task>() {
         override fun areItemsTheSame(oldItem: Task, newItem: Task): Boolean {
-            return oldItem === newItem
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Task, newItem: Task): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem == newItem
         }
     }
 }

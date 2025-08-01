@@ -92,9 +92,15 @@ class MainActivity : AppCompatActivity() {
             findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawer_layout).close()
         }
 
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-                return false
+                val fromPosition = viewHolder.adapterPosition
+                val toPosition = target.adapterPosition
+                val list = adapter.currentList.toMutableList()
+                Collections.swap(list, fromPosition, toPosition)
+                updateTaskOrder(list)
+                adapter.notifyItemMoved(fromPosition, toPosition)
+                return true
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -278,4 +284,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateTaskOrder(tasks: List<Task>) {
+        for (i in tasks.indices) {
+            val task = tasks[i].copy(order = i)
+            mainViewModel.update(task)
+        }
+    }
 }

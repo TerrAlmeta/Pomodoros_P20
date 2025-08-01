@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pomodoros</string>
+    <string name="task_name">Nombre de la tarea</string>
     <string name="task_name_title">Nombre</string>
     <string name="task_name_hint">Nombre de Tarea</string>
     <string name="duration_title">Duración</string>

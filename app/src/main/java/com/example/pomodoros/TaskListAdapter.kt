@@ -29,11 +29,13 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TasksC
 
     interface OnItemClickListener {
         fun onItemClick(task: Task)
+        fun onDoubleClick(task: Task)
     }
 
     class TaskViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val taskItemView: TextView = itemView.findViewById(R.id.textView)
         private val cyclesTextView: TextView = itemView.findViewById(R.id.cycles_text_view)
+        private var lastClickTime: Long = 0
 
         fun bind(task: Task, listener: OnItemClickListener?) {
             taskItemView.text = task.name
@@ -60,7 +62,13 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(TasksC
                 }
             }
             itemView.setOnClickListener {
-                listener?.onItemClick(task)
+                val clickTime = System.currentTimeMillis()
+                if (clickTime - lastClickTime < 500) {
+                    listener?.onDoubleClick(task)
+                } else {
+                    listener?.onItemClick(task)
+                }
+                lastClickTime = clickTime
             }
         }
 

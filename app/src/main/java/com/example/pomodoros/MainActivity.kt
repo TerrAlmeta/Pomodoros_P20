@@ -30,7 +30,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
-class MainActivity : AppCompatActivity(), SwipeToEditCallback.SwipeToEditCallbackListener {
+class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var adapter: TaskListAdapter
@@ -92,18 +92,29 @@ class MainActivity : AppCompatActivity(), SwipeToEditCallback.SwipeToEditCallbac
             findViewById<androidx.drawerlayout.widget.DrawerLayout>(R.id.drawer_layout).close()
         }
 
-        val swipeHandler = object : SwipeToEditCallback(this, this) {
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                // Do nothing here. The actions will be handled by click listeners on the buttons.
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                return false
             }
-        }
-        val itemTouchHelper = ItemTouchHelper(swipeHandler)
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val task = adapter.currentList[position]
+                mainViewModel.delete(task)
+            }
+        })
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
         adapter.setOnItemClickListener(object : TaskListAdapter.OnItemClickListener {
             override fun onItemClick(task: Task) {
                 task.isSelected = !task.isSelected
                 mainViewModel.update(task)
+            }
+
+            override fun onDoubleClick(task: Task) {
+                val intent = Intent(this@MainActivity, TaskDetailActivity::class.java)
+                intent.putExtra("TASK_ID", task.id)
+                startActivity(intent)
             }
         })
 
@@ -267,28 +278,4 @@ class MainActivity : AppCompatActivity(), SwipeToEditCallback.SwipeToEditCallbac
         }
     }
 
-    override fun onEditClicked(position: Int) {
-        val task = adapter.currentList[position]
-        val intent = Intent(this, TaskDetailActivity::class.java)
-        intent.putExtra("TASK_ID", task.id)
-        startActivity(intent)
-    }
-
-    override fun onDeleteClicked(position: Int) {
-        val task = adapter.currentList[position]
-        mainViewModel.delete(task)
-    }
-
-    override fun onItemMove(fromPosition: Int, toPosition: Int) {
-        val list = adapter.currentList.toMutableList()
-        Collections.swap(list, fromPosition, toPosition)
-        updateTaskOrder(list)
-    }
-
-    private fun updateTaskOrder(tasks: List<Task>) {
-        for (i in tasks.indices) {
-            val task = tasks[i].copy(order = i)
-            mainViewModel.update(task)
-        }
-    }
 }

@@ -17,6 +17,7 @@
 
     <style name="CustomSpinnerStyle" parent="Widget.AppCompat.Spinner">
         <item name="android:popupBackground">@color/menu_background_color</item>
+        <item name="android:background">@drawable/edit_text_background</item>
     </style>
 
     <style name="TitleTextStyle">

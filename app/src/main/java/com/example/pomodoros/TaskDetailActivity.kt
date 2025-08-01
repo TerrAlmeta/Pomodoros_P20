@@ -30,6 +30,61 @@ class TaskDetailActivity : AppCompatActivity() {
         val longBreakDurationEditText = findViewById<EditText>(R.id.long_break_duration_edit_text)
         val cyclesEditText = findViewById<EditText>(R.id.cycles_edit_text)
 
+        taskNameEditText.addTextChangedListener(object : android.text.TextWatcher {
+            override fun afterTextChanged(s: android.text.Editable?) {
+                if (!s.toString().isEmpty()) {
+                    taskNameEditText.setBackgroundResource(R.drawable.edit_text_background)
+                    taskNameEditText.error = null
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        pomodoroDurationEditText.addTextChangedListener(object : android.text.TextWatcher {
+            override fun afterTextChanged(s: android.text.Editable?) {
+                if (!s.toString().isEmpty()) {
+                    pomodoroDurationEditText.setBackgroundResource(R.drawable.edit_text_background)
+                    pomodoroDurationEditText.error = null
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        shortBreakDurationEditText.addTextChangedListener(object : android.text.TextWatcher {
+            override fun afterTextChanged(s: android.text.Editable?) {
+                if (!s.toString().isEmpty()) {
+                    shortBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background)
+                    shortBreakDurationEditText.error = null
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        longBreakDurationEditText.addTextChangedListener(object : android.text.TextWatcher {
+            override fun afterTextChanged(s: android.text.Editable?) {
+                if (!s.toString().isEmpty()) {
+                    longBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background)
+                    longBreakDurationEditText.error = null
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        cyclesEditText.addTextChangedListener(object : android.text.TextWatcher {
+            override fun afterTextChanged(s: android.text.Editable?) {
+                if (!s.toString().isEmpty()) {
+                    cyclesEditText.setBackgroundResource(R.drawable.edit_text_background)
+                    cyclesEditText.error = null
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
         val alarmSoundNames = resources.getStringArray(R.array.alarm_sound_names)
         val backgroundSoundNames = resources.getStringArray(R.array.background_sound_names)
 
@@ -99,16 +154,22 @@ class TaskDetailActivity : AppCompatActivity() {
             findViewById(R.id.color_2),
             findViewById(R.id.color_3),
             findViewById(R.id.color_4),
-            findViewById(R.id.color_5)
+            findViewById(R.id.color_5),
+            findViewById(R.id.color_6),
+            findViewById(R.id.color_7),
+            findViewById(R.id.color_8),
+            findViewById(R.id.color_9),
+            findViewById(R.id.color_10)
         )
 
-        colorViews[0].setOnClickListener { updateColorSelection(it, "#FF7F50") }
-        colorViews[1].setOnClickListener { updateColorSelection(it, "#6495ED") }
-        colorViews[2].setOnClickListener { updateColorSelection(it, "#9FE2BF") }
-        colorViews[3].setOnClickListener { updateColorSelection(it, "#DE3163") }
-        colorViews[4].setOnClickListener { updateColorSelection(it, "#FFBF00") }
+        val colors = listOf(
+            "#FF7F50", "#6495ED", "#9FE2BF", "#DE3163", "#FFBF00",
+            "#E0BBE4", "#957DAD", "#D291BC", "#FEC8D8", "#FFDFD3"
+        )
 
-        val colors = listOf("#FF7F50", "#6495ED", "#9FE2BF", "#DE3163", "#FFBF00")
+        for (i in colorViews.indices) {
+            colorViews[i].setOnClickListener { updateColorSelection(it, colors[i]) }
+        }
         if (taskId != -1) {
             taskDetailViewModel.getTaskById(taskId).observe(this) { task ->
                 task?.let {
@@ -232,7 +293,7 @@ class TaskDetailActivity : AppCompatActivity() {
 
         if (taskNameEditText.text.toString().isEmpty()) {
             taskNameEditText.setBackgroundResource(R.drawable.edit_text_background_error)
-            taskNameEditText.error = "Campo Requerido"
+            taskNameEditText.error = getString(R.string.required_field)
             isValid = false
         } else {
             taskNameEditText.setBackgroundResource(R.drawable.edit_text_background)
@@ -241,7 +302,7 @@ class TaskDetailActivity : AppCompatActivity() {
 
         if (pomodoroDurationEditText.text.toString().isEmpty()) {
             pomodoroDurationEditText.setBackgroundResource(R.drawable.edit_text_background_error)
-            pomodoroDurationEditText.error = "Campo Requerido"
+            pomodoroDurationEditText.error = getString(R.string.required_field)
             isValid = false
         } else {
             pomodoroDurationEditText.setBackgroundResource(R.drawable.edit_text_background)
@@ -250,7 +311,7 @@ class TaskDetailActivity : AppCompatActivity() {
 
         if (shortBreakDurationEditText.text.toString().isEmpty()) {
             shortBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background_error)
-            shortBreakDurationEditText.error = "Campo Requerido"
+            shortBreakDurationEditText.error = getString(R.string.required_field)
             isValid = false
         } else {
             shortBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background)
@@ -259,7 +320,7 @@ class TaskDetailActivity : AppCompatActivity() {
 
         if (longBreakDurationEditText.text.toString().isEmpty()) {
             longBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background_error)
-            longBreakDurationEditText.error = "Campo Requerido"
+            longBreakDurationEditText.error = getString(R.string.required_field)
             isValid = false
         } else {
             longBreakDurationEditText.setBackgroundResource(R.drawable.edit_text_background)
@@ -268,7 +329,7 @@ class TaskDetailActivity : AppCompatActivity() {
 
         if (cyclesEditText.text.toString().isEmpty()) {
             cyclesEditText.setBackgroundResource(R.drawable.edit_text_background_error)
-            cyclesEditText.error = "Campo Requerido"
+            cyclesEditText.error = getString(R.string.required_field)
             isValid = false
         } else {
             cyclesEditText.setBackgroundResource(R.drawable.edit_text_background)

@@ -17,14 +17,15 @@
             style="@style/TitleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nombre" />
+            android:text="@string/task_name_title"
+            android:layout_marginBottom="8dp" />
 
         <EditText
             android:id="@+id/task_name_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autofillHints="name"
-            android:hint="Introduce un nombre para la Tarea"
+            android:hint="@string/task_name_hint"
             android:inputType="text"
             android:minHeight="48dp"
             android:background="@drawable/edit_text_background"
@@ -37,84 +38,121 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Duración" />
+            android:text="@string/duration_title" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
-            <TextView
-                style="@style/FieldTextStyle"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pomodoro" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/pomodoro_duration_edit_text"
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/FieldTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pomodoro_title" />
+
+                <EditText
+                    android:id="@+id/pomodoro_duration_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:text="25"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="12dp"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:minWidth="48dp"
-                android:background="@drawable/edit_text_background"
-                android:padding="12dp"
-                android:textColor="@color/white" />
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/FieldTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/short_break_title" />
+
+                <EditText
+                    android:id="@+id/short_break_duration_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:text="5"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="12dp"
+                    android:textColor="@color/white" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
-            <TextView
-                style="@style/FieldTextStyle"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Receso" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/short_break_duration_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:minWidth="48dp"
-                android:background="@drawable/edit_text_background"
-                android:padding="12dp"
-                android:textColor="@color/white" />
-        </LinearLayout>
+                <TextView
+                    style="@style/FieldTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/long_break_title" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/long_break_duration_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:text="15"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="12dp"
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
-            <TextView
-                style="@style/FieldTextStyle"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1"
-                android:text="Descanso" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/long_break_duration_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:minHeight="48dp"
-                android:minWidth="48dp"
-                android:background="@drawable/edit_text_background"
-                android:padding="12dp"
-                android:textColor="@color/white" />
+                <TextView
+                    style="@style/FieldTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cycles_title" />
+
+                <EditText
+                    android:id="@+id/cycles_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:text="4"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="12dp"
+                    android:textColor="@color/white" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView
@@ -122,25 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Ciclos" />
-
-        <EditText
-            android:id="@+id/cycles_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:background="@drawable/edit_text_background"
-            android:padding="12dp"
-            android:textColor="@color/white" />
-
-        <TextView
-            style="@style/TitleTextStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Alarma" />
+            android:text="@string/alarm_title" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -153,7 +173,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pomodoro" />
+                android:text="@string/pomodoro_title" />
 
             <Spinner
                 android:id="@+id/pomodoro_alarm_spinner"
@@ -174,7 +194,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Receso" />
+                android:text="@string/short_break_title" />
 
             <Spinner
                 android:id="@+id/short_break_alarm_spinner"
@@ -195,7 +215,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Descanso" />
+                android:text="@string/long_break_title" />
 
             <Spinner
                 android:id="@+id/long_break_alarm_spinner"
@@ -210,7 +230,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Fondo" />
+            android:text="@string/background_title" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -223,7 +243,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pomodoro" />
+                android:text="@string/pomodoro_title" />
 
             <Spinner
                 android:id="@+id/pomodoro_background_spinner"
@@ -244,7 +264,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Receso" />
+                android:text="@string/short_break_title" />
 
             <Spinner
                 android:id="@+id/short_break_background_spinner"
@@ -265,7 +285,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Descanso" />
+                android:text="@string/long_break_title" />
 
             <Spinner
                 android:id="@+id/long_break_background_spinner"
@@ -279,7 +299,9 @@
             style="@style/TitleTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/task_color" />
 
         <LinearLayout
@@ -327,6 +349,53 @@
                 android:layout_marginStart="8dp"
                 android:background="@drawable/color_swatch_circle"
                 android:backgroundTint="@color/task_color_5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/color_6"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_6" />
+
+            <View
+                android:id="@+id/color_7"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_7" />
+
+            <View
+                android:id="@+id/color_8"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_8" />
+
+            <View
+                android:id="@+id/color_9"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_9" />
+
+            <View
+                android:id="@+id/color_10"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/color_swatch_circle"
+                android:backgroundTint="@color/task_color_10" />
         </LinearLayout>
 
 

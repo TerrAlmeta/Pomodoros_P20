@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">Pomodoros</string>
-    <string name="task_name">Task Name</string>
-    <string name="pomodoro_duration">Pomodoro Duration</string>
-    <string name="short_break_duration">Short Break Duration</string>
-    <string name="long_break_duration">Long Break Duration</string>
-    <string name="cycles">Cycles</string>
+    <string name="task_name_title">Nombre</string>
+    <string name="task_name_hint">Nombre de Tarea</string>
+    <string name="duration_title">Duración</string>
+    <string name="pomodoro_title">Pomodoro</string>
+    <string name="short_break_title">Receso</string>
+    <string name="long_break_title">Descanso</string>
+    <string name="cycles_title">Ciclos</string>
+    <string name="alarm_title">Alarma</string>
+    <string name="background_title">Fondo</string>
+    <string name="required_field">Campo Requerido</string>
     <string name="start">Start</string>
     <string name="pause">Pause</string>
     <string name="restart">Restart</string>
